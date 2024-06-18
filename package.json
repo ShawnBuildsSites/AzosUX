@@ -1,0 +1,49 @@
+{
+  "--": "https://docs.npmjs.com/cli/v10/configuring-npm/package-json",
+  "name": "@g8/ux_monorepo",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "source": "index.htm",
+  "description": "UX Components package",
+  "author": "Great Day",
+  "license": "Private",
+  "contributors": [
+    {
+      "name": "STG",
+      "email": "shawn.gray@greatdayimprovements.com",
+      "url": "https://g8day.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mygreatday/toys"
+  },
+  "keywords": [
+    "zeus",
+    "g8",
+    "admin",
+    "folio","ux","ui"
+  ],
+  "bugs": {
+    "url": "https://github.com/mygreatday/g8-ux-design/issues"
+  },
+  "homepage": "https://github.com/mygreatday/g8-ux-design",
+  "workspaces": [
+    "packages/ux"
+  ],
+  "browserslist": "Chrome 110",
+  "scripts": {
+    "build": "parcel build  \"./packages/ux/index.htm\" --no-cache --dist-dir \"./out/cms-ux\" --public-url \"https://uxdev-1fe54.kxcdn.com/ux\"",
+    "ui": "parcel --no-cache --dist-dir \"./out/www-local\" \"./packages/ux/index.htm\""
+  },
+  "dependencies": {
+    "azos": "file:C:/dev/azos-js/packages/azos",
+    "azos-ui": "file:C:/dev/azos-js/packages/azos-ui"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  }
+}

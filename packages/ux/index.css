@@ -1,0 +1,29 @@
+body{
+  color: #454545;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px;
+  background: #c0c0c0;
+}
+
+
+.theme-folio{
+  --paper: #f0f0f0;
+  --hdr-bg-color: #404040;
+  --hdr-color: #d0d0d0;
+  --hdr-height: 44px;
+  --hdr-shadow: 50px 0px 12px rgba(0,0,0, 0.35);
+
+  --main-bg: #e0e0e0;
+
+  --menu-btn-color: #f09020;
+  --menu-btn-width: 58px;
+  --menu-svg-color: #f4f4f4;
+  --menu-svg-stroke: 2.2px;
+  --menu-shadow: 4px 0px 24px rgba(0,0,0,0.25);
+  --menu-bg-color: linear-gradient(#f09020, #ffaf4f);
+  --menu-color: #fff;
+  --menu-opacity: 1.0;
+  --menu-font-size: 1.5em;
+}
