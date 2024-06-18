@@ -5,14 +5,14 @@
   Do not add 3rd party libraries on a whim!!!
 */
 
-import { dispose } from "../../../../azos-js/packages/azos/types.js";
-import { application } from "../../../../azos-js/packages/azos/application.js";
-import { Arena } from "../../../../azos-js/packages/azos-ui/arena.js";
-import { ConLog } from "../../../../azos-js/packages/azos/ilog.js";
-import { BrowserStorage } from "../../../../azos-js/packages/azos/storage.js";
-import { AppSync } from "../../../../azos-js/packages/azos/appsync.js";
-import { IClient } from "../../../../azos-js/packages/azos/client.js";
-import { LOG_TYPE } from "../../../../azos-js/packages/azos/log.js";
+import { dispose } from "../../../azos-js/packages/azos/types.js";
+import { application } from "../../../azos-js/packages/azos/application.js";
+import { Arena } from "../../../azos-js/packages/azos-ui/arena.js";
+import { ConLog } from "../../../azos-js/packages/azos/ilog.js";
+import { BrowserStorage } from "../../../azos-js/packages/azos/storage.js";
+import { AppSync } from "../../../azos-js/packages/azos/appsync.js";
+import { IClient } from "../../../azos-js/packages/azos/client.js";
+import { LOG_TYPE } from "../../../azos-js/packages/azos/log.js";
 
 //  Application configuration root ======================================
 const cfgApp = {

@@ -1,10 +1,7 @@
-import {AzosElement, html} from '../../../../../azos-js/packages/azos-ui/ui.js';
+import {AzosElement, html} from '../../../../azos-js/packages/azos-ui/ui.js';
 import {buttonStyles} from './styles.js';
 
 export class AzButton extends AzosElement{
-    static properties={
-        color:{}, inverted:{}, width:{}
-    };
     static styles=[buttonStyles];
     constructor(){
         super();

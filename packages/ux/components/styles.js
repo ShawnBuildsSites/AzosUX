@@ -1,19 +1,20 @@
-import {css} from '../../../../../azos-js/packages/azos-ui/ui.js';
+import {css} from '../../../../azos-js/packages/azos-ui/ui.js';
+import * as color from './color-pallet.js';
 
-/***************************************************
- * This file contains styles for components.       *
- * What's included:                                *
- * buttonStyles  *  checkboxStyles  *  customCheck *
- * radioStyles   *  switchCheck                    *
- *                                                 *
- * NOTE: Must replace all color references with    *
- *       theme variables!                          *
-****************************************************/
+/*****************************************************
+ * This file contains styles for components.         *
+ *                                                   *
+ * What's included:                                  *
+ * buttonStyles  *  checkboxStyles  *  customCheck   *
+ * inputStyles   *  radioStyles     *  selectStyles  *
+ * switchCheck                                       *
+ *                                                   *
+ * NOTE: Colors are contained in color-pallet.js     *
+******************************************************/
 
-const _primaryColor=css`#2660a4`;
-const _secondaryColor=css`#f19953`;
-const _lightColor=css`#edf7f6`;
-const _darkColor=css`#56351e`;
+export const baseStyles=css`
+    .primary_bg{background-color:${color.primary};}
+`;
 
 export const buttonStyles=css`
     button{
@@ -26,9 +27,9 @@ export const buttonStyles=css`
     }
     button:hover{ filter:brightness(1.15); }
     .primary_btn{
-        background-color:${_primaryColor};
-        color:${_lightColor};
-        border:2px solid ${_lightColor};
+        background-color:${color.primary};
+        color:${color.light};
+        border:2px solid ${color.light};
     }
     .half_width{
         display:block;
@@ -39,29 +40,29 @@ export const buttonStyles=css`
         width:100%;
     }
     .primary_btn.inverted{
-        background-color:${_lightColor};
-        color:${_primaryColor};
-        border:2px solid ${_primaryColor};
+        background-color:${color.light};
+        color:${color.primary};
+        border:2px solid ${color.primary};
     }
     .secondary_btn{
-        background-color:${_secondaryColor};
-        color:${_lightColor};
-        border:2px solid ${_lightColor};
+        background-color:${color.secondary};
+        color:${color.light};
+        border:2px solid ${color.light};
     }
     .secondary_btn.inverted{
-        background-color:${_lightColor};
-        color:${_secondaryColor};
-        border:2px solid ${_secondaryColor};
+        background-color:${color.light};
+        color:${color.secondary};
+        border:2px solid ${color.secondary};
     }
     .light_btn,.dark_btn.inverted{
-        background-color:${_lightColor};
-        color:${_darkColor};
-        border:2px solid ${_darkColor};
+        background-color:${color.light};
+        color:${color.dark};
+        border:2px solid ${color.dark};
     }
     .light_btn.inverted,.dark_btn{
-        background-color:${_darkColor};
-        color:${_lightColor};
-        border:2px solid ${_lightColor};
+        background-color:${color.dark};
+        color:${color.light};
+        border:2px solid ${color.light};
     }
 `;
 
@@ -80,14 +81,15 @@ export const checkboxStyles=css`
 
 export const customCheck=css`
     label:has(.customCheck){ gap:.75em; }
+    label:has(.customCheck):hover,label:has(.customCheck):focus,.customCheck:hover,.customCheck:focus{box-shadow:0 0 5px ${color.primary};}
     .customCheck{
         cursor:pointer;
         margin:0;
         width:1.25em;
         height:1.25em;
         appearance:none;
-        background-color:${_lightColor};
-        border:.1em solid ${_darkColor};
+        background-color:${color.light};
+        border:.1em solid ${color.dark};
         border-radius:.2em;
         display:grid;
         place-content:center;
@@ -100,7 +102,7 @@ export const customCheck=css`
         transform:scale(0);
         transform-origin:center center;
         transition:.15s transform ease-in-out;
-        box-shadow:inset 1em 1em ${_primaryColor};
+        box-shadow:inset 1em 1em ${color.primary};
     }
     .customCheck:checked::before{ transform:scale(1); }
     .customCheck:indeterminate::before{
@@ -111,7 +113,7 @@ export const customCheck=css`
         transform:scale(1);
         transform-origin:center center;
         transition:.15s transform ease-in-out;
-        box-shadow:inset 1em 1em ${_primaryColor};
+        box-shadow:inset 1em 1em ${color.primary};
     }
 `;
 
@@ -127,14 +129,15 @@ export const radioStyles=css`
         grid-template-columns: 1em auto;
         gap:.5em;
     }
+    label:has(.radio):hover,.radio:hover,label:has(.radio):focus,.radio:focus{box-shadow:0 0 5px ${color.primary};}
     .radio{
         cursor:pointer;
         margin:0;
         width:1.25em;
         height:1.25em;
         appearance:none;
-        background-color:${_lightColor};
-        border:.1em solid ${_darkColor};
+        background-color:${color.light};
+        border:.1em solid ${color.dark};
         border-radius:.2em;
         display:grid;
         place-content:center;
@@ -147,7 +150,7 @@ export const radioStyles=css`
         transform:scale(0);
         transform-origin:center center;
         transition:.15s transform ease-in-out;
-        box-shadow:inset 1em 1em ${_primaryColor};
+        box-shadow:inset 1em 1em ${color.primary};
     }
     .radio:checked::before{ transform:scale(1); }
 `;
@@ -161,15 +164,16 @@ export const switchCheck=css`
         color:inherit;
         font-size:inherit;
         box-sizing:content-box;
-        border:1px solid ${_darkColor};
+        border:1px solid ${color.dark};
         border-radius:1em;
         vertical-align:middle;
-        background: ${_darkColor};
+        background: ${color.dark};
         transition:.2 all ease;
         width:2em;
         height:1em;
     }
-    .switch:checked{ background: ${_lightColor}; }
+    label:has(.switch):hover,label:has(.switch):focus,.switch:hover,.switch:focus{box-shadow:0 0 5px ${color.primary};}
+    .switch:checked{ background: ${color.light}; }
     .switch::before{
         content:"";
         position:absolute;
@@ -178,7 +182,7 @@ export const switchCheck=css`
         height:.75em;
         border:none;
         border-radius:50%;
-        background-color: ${_lightColor};
+        background-color: ${color.light};
         transition:.2s all ease;
         top:50%;
         left:0;
@@ -186,18 +190,18 @@ export const switchCheck=css`
         margin:0 .15em;
     }
     .switch:checked::before{
-        background-color:${_primaryColor};
+        background-color:${color.primary};
         left:1em;
     }
 `;
 
 export const inputStyles=css`
     input[type=text],input[type=password],textarea{
-        border:1px solid ${_darkColor};
+        border:1px solid ${color.dark};
         border-radius:5px;
         padding:5px;
-        background:${_lightColor};
-        color:${_darkColor};
+        background:${color.light};
+        color:${color.dark};
         filter:brightness(1);
         width:100%;
         margin-bottom:10px;
@@ -206,8 +210,8 @@ export const inputStyles=css`
         filter:brightness(.85)
     }
     input[type=text]:disabled,input[type=password]:disabled,textarea:disabled{
-        color:${_lightColor};
-        background:${_darkColor};
+        color:${color.light};
+        background:${color.dark};
     }
     label:has(+input[type=text]),label:has(+input[type=password]),label:has(+textarea){
         display:block;
@@ -218,6 +222,27 @@ export const inputStyles=css`
     }
     input[type=text]:focus,input[type=password]:focus,textarea:focus,
     input[type=text]:hover,input[type=password]:hover,textarea:hover{
-        box-shadow:0 0 5px ${_primaryColor};
+        box-shadow:0 0 5px ${color.primary};
+    }
+`;
+
+export const selectStyles=css`
+    label:has(+select){
+        display:block;
+        margin-bottom:10px; margin-top:10px;
+    }
+    select{
+        border:1px solid ${color.dark};
+        border-radius:5px;
+        padding:5px;
+        background:${color.light};
+        color:${color.dark};
+        filter:brightness(1);
+        width:100%;
+        margin-bottom:10px;
+    }
+    select:disabled{
+        color:${color.light};
+        background:${color.dark};
     }
 `;

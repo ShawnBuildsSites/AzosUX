@@ -32,7 +32,6 @@
         <az-checkbox id="check_ind" label="This checkbox has three states" indeterminate="true"></az-checkbox>
         <az-checkbox id="check_switch" label="This is a switch instead." isSwitch="true"></az-checkbox>
         <ul class="defs">
-          <li><strong>Attributes for &lt;az-checkbox&gt;</strong></li>
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Provides the label&apos;s text next to the checkbox</li>
           <li><strong>indeterminate</strong> <em>(Boolean)</em> &mdash; If true, adds third <em>indeterminate</em> (neither <strong>on</strong> nor <strong>off</strong>). <strong>Default: false.</strong></li>
@@ -40,29 +39,19 @@
         </ul>
       </div>
       <div class="block">
-        <p><strong>az-radio-group &amp; az-radio-item</strong></p>
-        <az-radio-group id="radio_group" label="Choose one of the following:">
-          <az-radio-item label="First choice"></az-radio-item>
-          <az-radio-item label="Choose this one"></az-radio-item>
-          <az-radio-item label="A fine choice, yet it is disabled" disable="true"></az-radio-item>
-          <az-radio-item label="The choosiest choice chooser"></az-radio-item>
-        </az-radio-group>
+        <p><strong>az-radio-group</strong></p>
+        <az-radio-group id="radio_group" label="Choose one of the following:" choices="First choice|Choose this one|A fine choice|The choosiest choice"></az-radio-group>
         <ul class="defs">
-          <li><strong>Attributes for &lt;az-radio-group&gt;</strong></li>
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Provides the main prompt for the choices.</li>
+          <li><strong>choices</strong> <em>(String)</em> &mdash; Labels for each choice, separated by <strong>|</strong> .</li>
           <li><strong>orientation</strong> <em>(v | h)</em> &mdash; List the choices <strong><u>v</u></strong>ertically (stacked) or <strong><u>h</u></strong>orizontally ("word-wrapped"). <strong>Default: v</strong></li>
           <li><strong>isSwitch</strong> <em>(Boolean)</em> &mdash; If true, replace each radio button with an on/off switch. <strong>Default: false</strong></li>
-        </ul>
-        <ul class="defs">
-          <li><strong>Attributes for &lt;az-radio-item&gt;</strong></li>
-          <li><strong>label</strong> <em>(String)</em> &mdash; Radio item text.</li>
-          <li><strong>disable</strong> <em>(Boolean)</em> &mdash; If true, radio item will not be selectable.</li>
         </ul>
       </div>
       <div class="block">
         <p><strong>az-radio-group as switches</strong></p>
-        <az-radio-group id="radio_group" label="Choose one of the following:" choices="First choice|Choose this one|A fine choice|The choosiest choice" isSwitch="true"></az-radio-group>
+        <az-radio-group id="radio_switch_group" label="Choose one of the following:" choices="First choice|Choose this one|A fine choice|The choosiest choice" isSwitch="true"></az-radio-group>
         <ul class="defs">
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Provides the main prompt for the choices.</li>
@@ -76,20 +65,17 @@
         <az-text-input id="single_line_input" label="This is a single-line input" placeholder="Type something here&hellip;"></az-text-input>
         <az-text-input id="password_input" label="This is a password field" placeholder="Type something here&hellip;" inputType="password"></az-text-input>
         <az-text-input id="max_5_input" label="Cannot type more than 5 characters" placeholder="Type something here&hellip;" maxLength="5"></az-text-input>
-        <az-text-input id="disabled_input" label="This field is disabled" value="You cannot select or edit this text" disable="true"></az-text-input>
-        <az-text-input id="readonly_input" label="This field is read-only" value="You can select this text but cannot edit it" readonly="true"></az-text-input>
+        <az-text-input id="disabled_input" label="This field is disabled" value="You cannot select or edit this text" state="disable"></az-text-input>
+        <az-text-input id="readonly_input" label="This field is read-only" value="You can select this text but cannot edit it" state="readonly"></az-text-input>
         <az-text-input id="multi_line_text_area" label="This is a multi-line input" placeholder="Type something here&hellip;" inputType="long"></az-text-input>
         <ul class="defs">
-          <li><strong>Attributes for &lt;az-text-input&gt;</strong></li>
           <li><strong>inputType</strong> <em>(short | long | password)</em> &mdash; Determines the type of input field. <strong>Default: single.</strong><br>&bull; If <strong>single</strong>, the field is a standard single-line text input.<br>&bull; If <strong>long</strong>, the field becomes a multi-line text area (useful for paragraphs and longer text inputs).<br>&bull; If <strong>password</strong>, the single-line input is masked by &bull;&bull;&bull;.</li>
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Input field label.</li>
           <li><strong>placeholder</strong> <em>(String)</em> &mdash; Default text displayed in the field. This text has no data value.</li>
           <li><strong>minLength</strong> <em>(Integer)</em> &mdash; Minimum number of characters allowed. This field only applies to input validation. <strong>Default: 0.</strong></li>
           <li><strong>maxLength</strong> <em>(Integer)</em> &mdash; Maximum number of characters allowed. <strong>Default: no limit.</strong></li>
-          <li><strong>disable</strong> <em>(Boolean)</em> &mdash; If true, disables the input field. <strong>Default: false</strong></li>
-          <li><strong>readonly</strong> <em>(Boolean)</em> &mdash; If true, sets the input field to read-only. <strong>Default: false</strong></li>
-          <li><strong>required</strong> <em>(Boolean)</em> &mdash; If true, the input field is required to be filled before the form can be submitted. <strong>Default: false</strong></li>
+          <li><strong>state</strong> <em>(null | disable | readonly | required)</em> Determines the state of the input field. <strong>Default: null.</strong></li>
         </ul>
       </div>
       <div class="block">
@@ -106,7 +92,6 @@
         <az-button id="az_button_half" label="Button with Half Width" width="half"></az-button>
         <az-button id="az_button_full" label="Button with Full Width" width="full"></az-button>
         <ul class="defs">
-          <li><strong>Attributes for &lt;az-button&gt;</strong></li>
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Text that is displayed in the button.</li>
           <li><strong>width</strong> <em>(initial | half | full)</em> &mdash; How wide the button is within its parent element. Initial is the default width. <strong>Default: initial</strong></li>
@@ -116,13 +101,16 @@
         </ul>
       </div>
       <div class="block">
-        <p><strong>az-select &amp; az-select-option</strong></p>
+        <p><strong>az-select</strong></p>
+        <az-select id="az_select" label="This is a select dropdown with some options" placeholder="Make your choice&hellip;" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
+        <az-select id="az_select_noplaceholder" label="Select with default placeholder" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
+        <az-select id="az_select_disabled" label="This is a disabled select dropdown" placeholder="Make your choice&hellip;" state="disable" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
         <ul class="defs">
-          <li><strong>Attributes for &lt;az-select&gt;</strong></li>
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Provides the main prompt for the select dropdown.</li>
           <li><strong>placeholder</strong> <em>(String)</em> &mdash; Prompt that shows in the first (non-value) option <strong>Default: "Select&hellip;".</strong></li>
-          <li><strong>options</strong> <em>(String)</em> &mdash; List of options separated by | .</li>
+          <li><strong>choices</strong> <em>(String)</em> &mdash; List of options separated by | .</li>
+          <li><strong>state</strong> <em>(null | disable | required)</em> Determines the state of the input field. <strong>Default: null.</strong></li>
         </ul>
       </div>
       <div class="block">

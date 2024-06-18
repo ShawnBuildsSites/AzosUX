@@ -1,21 +1,17 @@
-import {AzosElement, html} from '../../../../../azos-js/packages/azos-ui/ui.js';
+import {AzosElement, html} from '../../../../azos-js/packages/azos-ui/ui.js';
 import {radioStyles,switchCheck} from './styles.js';
 
 export class AzRadioGroup extends AzosElement{
-    static properties={
-        checked:{}, listItems:{}, orientation:{}, customCheck:{}
-    };
     static styles=[radioStyles,switchCheck];
     constructor(){
         super();
-        this.checked=false;
         this.listItems=this.getAttribute('choices').split('|');
         this.getAttribute('isSwitch') ? this.customCheck='switch' : this.customCheck='radio';
     }
     render(){
         return html`
             <div>
-                <p>${this.labelText}</p>
+                <p>${this.getAttribute('label')}</p>
                 ${this.listItems.map(
                     (i) => html`
                         <div>

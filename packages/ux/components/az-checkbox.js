@@ -1,13 +1,9 @@
-import {AzosElement, html} from '../../../../../azos-js/packages/azos-ui/ui.js';
+import {AzosElement, html} from '../../../../azos-js/packages/azos-ui/ui.js';
 import {checkboxStyles,customCheck,switchCheck} from './styles.js';
 
 export class AzCheckbox extends AzosElement{
-    static properties={
-        checked:{}, labelText:{}, customCheck:{}, indeterminate:{}
-    };
-    static styles=[
-        checkboxStyles, customCheck, switchCheck
-    ];
+    static properties={ checked:{} };
+    static styles=[checkboxStyles, customCheck, switchCheck];
     constructor(){
         super();
         this.checked=false;
@@ -30,7 +26,7 @@ export class AzCheckbox extends AzosElement{
             <div>
                 <label for="${this.id}">
                     <input type="checkbox" class="${this.customCheck}" id="${this.id}" name="${this.id}">
-                    ${this.labelText}
+                    ${this.getAttribute('label')}
                 </label>
             </div>
         `;
