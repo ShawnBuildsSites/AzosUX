@@ -140,11 +140,11 @@ export const customCheck=css`
         clip-path:polygon(22% 48%, 36% 81%, 80% 0, 100% 21%, 37% 100%, 0 58%);
         transform:scale(0);
         transform-origin:center center;
-        transition:.15s transform ease-in-out;
+        transition:.1s transform ease-in-out;
         box-shadow:inset 1em 1em ${color.dark};
     }
-    .customCheck:checked::before{ transform:scale(1); }
-    .customCheck:indeterminate::before{
+    .customCheck:checked::before{ transform:scale(.75); }
+    /*.customCheck:indeterminate::before{
         content:"";
         width:1.6em;
         height:1.6em;
@@ -153,7 +153,7 @@ export const customCheck=css`
         transform-origin:center center;
         transition:.15s transform ease-in-out;
         box-shadow:inset 1em 1em currentColor;
-    }
+    }*/
     .text_primary .customCheck,.bg_primary .customCheck,.border_primary .customCheck{border:1px solid ${color.primary};}
     .text_primary .customCheck::before,.bg_primary .customCheck::before,.border_primary .customCheck::before{box-shadow:inset 1em 1em ${color.primary};}
     .text_secondary .customCheck,.bg_secondary .customCheck,.border_secondary .customCheck{border:1px solid ${color.primary};}
@@ -187,25 +187,25 @@ export const radioStyles=css`
     label:has(.radio):hover,.radio:hover,label:has(.radio):focus,.radio:focus{box-shadow:0 0 5px ${color.primary};}
     .radio{
         cursor:pointer;
+        appearance:none;
         margin:0;
         width:1.25em;
         height:1.25em;
-        appearance:none;
         background-color:${color.light};
-        border-radius:.2em;
+        border-radius:50%;
         display:grid;
         place-content:center;
     }
     .radio::before{
-        content:"";
+        content:'';
         width:1.6em;
         height:1.6em;
-        clip-path:polygon(22% 48%, 36% 81%, 80% 0, 100% 21%, 37% 100%, 0 58%);
         transform:scale(0);
+        border-radius:50%;
         transform-origin:center center;
-        transition:.15s transform ease-in-out;
+        transition:.1s transform ease-in-out;
     }
-    .radio:checked::before{ transform:scale(1); }
+    .radio:checked::before{ transform:scale(.4); }
 
     .text_primary .radio,.bg_primary .radio,.border_primary .radio{border:1px solid ${color.primary};}
     .text_primary .radio::before,.bg_primary .radio::before,.border_primary .radio::before{box-shadow:inset 1em 1em ${color.primary};}
@@ -243,7 +243,7 @@ export const switchCheck=css`
         height:1em;
     }
     label:has(.switch):hover,label:has(.switch):focus,.switch:hover,.switch:focus{box-shadow:0 0 5px ${color.primary};}
-    .switch:checked{ background: ${color.light}; }
+    .switch:checked,.bg_danger .switch:checked,.bg_success .switch:checked,.bg_warning .switch:checked,.bg_info .switch:checked,.bg_primary .switch:checked,.bg_secondary .switch:checked,.bg_dark .switch:checked,.bg_light .switch:checked{ background: ${color.light}; }
     .switch::before{
         content:"";
         position:absolute;
@@ -263,6 +263,23 @@ export const switchCheck=css`
         background-color:currentColor;
         left:1em;
     }
+    .bg_danger .switch{background:${color.danger}}
+    .bg_success .switch{background:${color.success}}
+    .bg_info .switch{background:${color.info}}
+    .bg_warning .switch{background:${color.warning}}
+    .bg_primary .switch{background:${color.primary}}
+    .bg_secondary .switch{background:${color.secondary}}
+    .bg_light .switch{background:${color.light}}
+    .bg_dark .switch{background:${color.dark}}
+
+    .bg_danger .switch:checked::before{background-color:${color.danger}}
+    .bg_success .switch:checked::before{background-color:${color.success}}
+    .bg_info .switch:checked::before{background-color:${color.info}}
+    .bg_warning .switch:checked::before{background-color:${color.warning}}
+    .bg_primary .switch:checked::before{background-color:${color.primary}}
+    .bg_secondary .switch:checked::before{background-color:${color.secondary}}
+    .bg_light .switch:checked::before{background-color:${color.light}}
+    .bg_dark .switch:checked::before{background-color:${color.dark}}
 `;
 
 export const inputStyles=css`
@@ -333,10 +350,13 @@ export const iconStyles=css`
         float:left;
         margin-right:.75em;
     }
+    .icon:has(+label){margin-top:.5em; margin-left:.75em; margin-right:.25em;}
     .fill_info{fill:${color.info};}
     .fill_warning{fill:${color.warning};}
     .fill_danger{fill:${color.danger};}
     .fill_success{fill:${color.success};}
+    .fill_light{fill:${color.light};}
+    .fill_dark{fill:${color.dark};}
 
     .bg_success .fill_success{fill:${color.light};}
     .bg_info .fill_info,.bg_warning .fill_warning,.bg_danger .fill_danger{fill:${color.dark};}

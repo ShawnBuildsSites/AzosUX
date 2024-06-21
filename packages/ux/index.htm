@@ -26,47 +26,42 @@
   <az-arena>
     <div slot="applet-content">
       <h1>UX Components Sandbox started June 17, 2024</h1>
+      <h3 style="text-align: center;">Color Choices</h3>
+      <temp-color-showcase></temp-color-showcase>
       <div class="block">
         <p><strong>az-checkbox</strong></p>
         <az-checkbox id="check_one" label="Hello! I have a custom checkmark!"></az-checkbox>
         <az-checkbox id="check_ind" label="This checkbox will have an indeterminate state (coming when I figure the damn thing out)" indeterminate="true"></az-checkbox>
         <az-checkbox id="check_info" label="Color set to text_info. Info will be delivered on July 32." color="text_info"></az-checkbox>
         <az-checkbox id="check_primary" label="Color set to bg_primary." color="bg_primary"></az-checkbox>
-        <az-checkbox id="check_warning" label="This is a warning checkbox." color="text_warning"></az-checkbox>
+        <az-checkbox id="check_warning" label="This is a checkbox using the warning color (not the warning status)." color="text_warning"></az-checkbox>
         <az-checkbox id="check_switch" label="This is a switch instead." isSwitch="true"></az-checkbox>
-        <az-checkbox id="check_switch_danger" label="Danger! Flip this text_danger switch." isSwitch="true" color="text_danger"></az-checkbox>
-        <az-checkbox id="check_switch_success" label="Success switch with a border_success style." isSwitch="true" color="border_success"></az-checkbox>
+        <az-checkbox id="check_switch_danger" label="Danger Status!" isSwitch="true" status="danger"></az-checkbox>
+        <az-checkbox id="check_switch_success" label="Success status switch." isSwitch="true" status="success"></az-checkbox>
+        <az-checkbox id="check_status_warning" label="Warning status checkbox" status="warning"></az-checkbox>
+        <az-checkbox id="check_status_info" label="Info status checkbox" status="info"></az-checkbox>
         <ul class="defs">
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Provides the label&apos;s text next to the checkbox</li>
           <li><strong>indeterminate</strong> <em>(Boolean)</em> &mdash; If true, adds third <em>indeterminate</em> (neither <strong>on</strong> nor <strong>off</strong>). <strong>Default: false.</strong></li>
           <li><strong>isSwitch</strong> <em>(Boolean)</em> &mdash; If true, ignore <em>defaultCheck</em> and replace the checkbox with an on/off switch. <strong>Default: false</strong></li>
+          <li><strong>status</strong> <em>(success | info | warning | danger)</em> &mdash; If defined, prepends the icon to the label and gives the element the corresponding color scheme.</li>
           <li><strong>color</strong> <em>(text_[primary | secondary | success | danger | warning | info | light | dark] | bg_[none | primary | secondary | success | danger | warning | info | light | dark] | border_[none | primary | secondary | success | danger | warning | info | light | dark])</em> &mdash; Set the border, text, or background color (for best readability, these properties cannot be mixed &amp; matched). <strong>Default: text_dark (dark text on no background with no border)</strong></li>
         </ul>
       </div>
       <div class="block">
         <p><strong>az-radio-group</strong></p>
         <az-radio-group id="radio_group" label="Choose one of the following:" choices="First choice|Choose this one|A fine choice|The choosiest choice"></az-radio-group>
-        <az-radio-group id="radio_group_danger" color="text_danger" label="Choose one of the following:" choices="First choice|Choose this one|A fine choice|The choosiest choice"></az-radio-group>
+        <az-radio-group id="radio_group_border_success" color="border_success" label="Choices with border_success:" choices="First choice|Choose this one|A fine choice|The choosiest choice"></az-radio-group>
+        <az-radio-group id="radio_group_danger" type="check" status="danger" label="Choices in Danger Status:" choices="First choice|Choose this one|A fine choice|The choosiest choice"></az-radio-group>
+        <az-radio-group id="radio_switch_group" type="switch" label="This has color set to text_primary" color="text_primary" choices="First choice|Choose this one|A fine choice|The choosiest choice"></az-radio-group>
         <ul class="defs">
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Provides the main prompt for the choices.</li>
           <li><strong>choices</strong> <em>(String)</em> &mdash; Labels for each choice, separated by <strong>|</strong> .</li>
           <li><strong>orientation</strong> <em>(v | h)</em> &mdash; List the choices <strong><u>v</u></strong>ertically (stacked) or <strong><u>h</u></strong>orizontally ("word-wrapped"). <strong>Default: v</strong></li>
-          <li><strong>isSwitch</strong> <em>(Boolean)</em> &mdash; If true, replace each radio button with an on/off switch. <strong>Default: false</strong></li>
-          <li><strong>color</strong> <em>(text_[primary | secondary | success | danger | warning | info | light | dark] | bg_[none | primary | secondary | success | danger | warning | info | light | dark] | border_[none | primary | secondary | success | danger | warning | info | light | dark])</em> &mdash; Set the border, text, or background color (for best readability, these properties cannot be mixed &amp; matched). <strong>Default: text_dark (dark text on no background with no border)</strong></li>
-        </ul>
-      </div>
-      <div class="block">
-        <p><strong>az-radio-group as switches</strong></p>
-        <az-radio-group id="radio_switch_group" label="Choose one of the following:" color="text_primary" choices="First choice|Choose this one|A fine choice|The choosiest choice" isSwitch="true"></az-radio-group>
-        <az-radio-group id="radio_switch_group_success" label="Choose one of the following:" color="text_success" choices="First choice|Choose this one|A fine choice|The choosiest choice" isSwitch="true"></az-radio-group>
-        <ul class="defs">
-          <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
-          <li><strong>label</strong> <em>(String)</em> &mdash; Provides the main prompt for the choices.</li>
-          <li><strong>choices</strong> <em>(String)</em> &mdash; Labels for each choice, separated by <strong>|</strong> .</li>
-          <li><strong>orientation</strong> <em>(v | h)</em> &mdash; List the choices <strong><u>v</u></strong>ertically (stacked) or <strong><u>h</u></strong>orizontally ("word-wrapped"). <strong>Default: v</strong></li>
-          <li><strong>isSwitch</strong> <em>(Boolean)</em> &mdash; If true, replace each radio button with an on/off switch. <strong>Default: false</strong></li>
+          <li><strong>type</strong> <em>(radio | check | switch)</em> &mdash; Determines the appearance of the radio button. <strong>Default: radio</strong></li>
+          <li><strong>status</strong> <em>(success | info | warning | danger)</em> &mdash; If defined, prepends the icon to the label and gives the element the corresponding color scheme.</li>
           <li><strong>color</strong> <em>(text_[primary | secondary | success | danger | warning | info | light | dark] | bg_[none | primary | secondary | success | danger | warning | info | light | dark] | border_[none | primary | secondary | success | danger | warning | info | light | dark])</em> &mdash; Set the border, text, or background color (for best readability, these properties cannot be mixed &amp; matched). <strong>Default: text_dark (dark text on no background with no border)</strong></li>
         </ul>
       </div>
@@ -74,7 +69,7 @@
         <p><strong>az-text-input</strong></p>
         <az-text-input id="single_line_input" label="This is a single-line input" placeholder="Type something here&hellip;"></az-text-input>
         <az-text-input id="password_input" label="This is a password field" placeholder="Type something here&hellip;" inputType="password" color="bg_secondary"></az-text-input>
-        <az-text-input id="max_5_input" label="Cannot type more than 5 characters" placeholder="Type something here&hellip;" maxLength="5" color="text_danger"></az-text-input>
+        <az-text-input id="max_5_input" label="Cannot type more than 5 characters" placeholder="This has warning status" maxLength="5" status="warning"></az-text-input>
         <az-text-input id="disabled_input" label="This field is disabled" value="You cannot select or edit this text" state="disable"></az-text-input>
         <az-text-input id="readonly_input" label="This field is read-only" value="You can select this text but cannot edit it" state="readonly"></az-text-input>
         <az-text-input id="multi_line_text_area" label="This is a multi-line input" placeholder="Type something here&hellip;" inputType="long"></az-text-input>
@@ -86,23 +81,26 @@
           <li><strong>minLength</strong> <em>(Integer)</em> &mdash; Minimum number of characters allowed. This field only applies to input validation. <strong>Default: 0.</strong></li>
           <li><strong>maxLength</strong> <em>(Integer)</em> &mdash; Maximum number of characters allowed. <strong>Default: no limit.</strong></li>
           <li><strong>state</strong> <em>(null | disable | readonly | required)</em> Determines the state of the input field. <strong>Default: null.</strong></li>
+          <li><strong>status</strong> <em>(success | info | warning | danger)</em> &mdash; If defined, prepends the icon to the label and gives the element the corresponding color scheme.</li>
           <li><strong>color</strong> <em>(text_[primary | secondary | success | danger | warning | info | light | dark] | bg_[none | primary | secondary | success | danger | warning | info | light | dark] | border_[none | primary | secondary | success | danger | warning | info | light | dark])</em> &mdash; Set the border, text, or background color (for best readability, these properties cannot be mixed &amp; matched). <strong>Default: text_dark (dark text on no background with no border)</strong></li>
         </ul>
       </div>
       <div class="block">
         <p><strong>az-button</strong></p>
+        <az-button id="az_button_status_button" status="danger" label="This is a dangerous button!"></az-button>
         <az-button id="az_button_primary" color="bg_primary" label="Primary Button"></az-button>
-        <az-button id="az_button_warning" label="Warning! Warning!" color="bg_warning"></az-button>
+        <az-button id="az_button_warning" label="Warning! Warning Status!" status="warning"></az-button>
         <az-button id="az_button_danger" label="Danger!" color="text_danger"></az-button>
         <az-button id="az_button_success" label="Good job!" color="bg_success"></az-button>
         <az-button id="az_button_info" label="Click to learn" color="bg_info"></az-button>
         <az-button id="az_button_secondary" label="Plain gray button" color="bg_secondary"></az-button>
         <az-button id="az_button_half" label="Button with Half Width" width="half"></az-button>
-        <az-button id="az_button_full" label="Button with Full Width" width="full"></az-button>
+        <az-button id="az_button_full" label="Button with Full Width" status="info" width="full"></az-button>
         <ul class="defs">
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Text that is displayed in the button.</li>
           <li><strong>width</strong> <em>(initial | half | full)</em> &mdash; How wide the button is within its parent element. Initial is the default width. <strong>Default: initial</strong></li>
+          <li><strong>status</strong> <em>(success | info | warning | danger)</em> &mdash; If defined, prepends the icon to the label and gives the element the corresponding color scheme.</li>
           <li><strong>color</strong> <em>(text_[primary | secondary | success | danger | warning | info | light | dark] | bg_[none | primary | secondary | success | danger | warning | info | light | dark] | border_[none | primary | secondary | success | danger | warning | info | light | dark])</em> &mdash; Set the border, text, or background color (for best readability, these properties cannot be mixed &amp; matched). <strong>Default: text_dark (dark text on no background with dark border)</strong></li>
           <!--<li><strong>triggers</strong> <em>(String)</em> &mdash; This string matches the ID of the element it triggers to show or hide. Example: When clicked, &lt;az-button <strong>triggers="target_dropdown"</strong>&gt; will show/hide &lt;az-dropdown <strong>id="target_dropdown"</strong>&gt;.</li>-->
         </ul>
@@ -110,8 +108,8 @@
       <div class="block">
         <p><strong>az-select</strong></p>
         <az-select id="az_select" label="This is a select dropdown with some options" placeholder="Make your choice&hellip;" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
-        <az-select id="az_select_noplaceholder" color="text_info" label="Select with default placeholder" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
-        <az-select id="az_select_warning" color="bg_warning" label="This is a select dropdown with some options" placeholder="Make your choice&hellip;" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
+        <az-select id="az_select_noplaceholder" color="border_info" label="Select with default placeholder" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
+        <az-select id="az_select_warning" status="warning" label="This is a select dropdown with some options" placeholder="Make your choice&hellip;" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
         <az-select id="az_select_disabled" label="This is a disabled select dropdown" placeholder="Make your choice&hellip;" state="disable" choices="This is a good option|Another option|Something else|aBcDeFgHiJkLmNoPqRsTuVwXyZ|zYxWvUtSrQpOnMlKjIhGfEdCbA|A somewhat decent option|Yes|No|Maybe|Strawberry Fields Forever|Sgt. Pepper&apos;s Lonely Hearts Club Band"></az-select>
         <ul class="defs">
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
@@ -119,13 +117,14 @@
           <li><strong>placeholder</strong> <em>(String)</em> &mdash; Prompt that shows in the first (non-value) option <strong>Default: "Select&hellip;".</strong></li>
           <li><strong>choices</strong> <em>(String)</em> &mdash; List of options separated by | .</li>
           <li><strong>state</strong> <em>(null | disable | required)</em> Determines the state of the input field. <strong>Default: null.</strong></li>
+          <li><strong>status</strong> <em>(success | info | warning | danger)</em> &mdash; If defined, prepends the icon to the label and gives the element the corresponding color scheme.</li>
           <li><strong>color</strong> <em>(text_[primary | secondary | success | danger | warning | info | light | dark] | bg_[none | primary | secondary | success | danger | warning | info | light | dark] | border_[none | primary | secondary | success | danger | warning | info | light | dark])</em> &mdash; Set the border, text, or background color (for best readability, these properties cannot be mixed &amp; matched). <strong>Default: text_dark (dark text on no background with no border)</strong></li>
         </ul>
       </div>
       <div class="block">
         <p><strong>az-slider</strong></p>
+        <az-slider id="basic_slider" label="Basic Slider"></az-slider>
         <ul class="defs">
-          <li><strong>Attributes for &lt;az-slider&gt;</strong></li>
           <li><strong>id</strong> <em>(String)</em> &mdash; Unique identifier to capture data.</li>
           <li><strong>label</strong> <em>(String)</em> &mdash; Slider description.</li>
           <li><strong>min</strong> <em>(Number)</em> &mdash; Minimum value of the slider's range. <strong>Default: 0.</strong></li>
