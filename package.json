@@ -34,8 +34,8 @@
   ],
   "browserslist": "Chrome 110",
   "scripts": {
-    "build": "parcel build  \"./packages/ux/index.htm\" --no-cache --dist-dir \"./out/cms-ux\" --public-url \"https://uxdev-1fe54.kxcdn.com/ux\"",
-    "ui": "parcel --no-cache --dist-dir \"./out/www-local\" \"./packages/ux/index.htm\""
+    "build": "parcel build  \"./packages/062124/index.htm\" --no-cache --dist-dir \"./out/cms-062124\" --public-url \"https://uxdev-1fe54.kxcdn.com/062124\"",
+    "ui": "parcel --no-cache --dist-dir \"./out/www-local\" \"./packages/062124/index.htm\""
   },
   "dependencies": {
     "azos": "file:C:/dev/azos-js/packages/azos",

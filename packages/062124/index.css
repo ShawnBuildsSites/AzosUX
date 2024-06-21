@@ -1,0 +1,53 @@
+body{
+  color: #454545;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px;
+  background: #c0c0c0;
+}
+
+
+.theme-folio{
+  --paper: #f0f0f0;
+  --hdr-bg-color: #404040;
+  --hdr-color: #d0d0d0;
+  --hdr-height: 44px;
+  --hdr-shadow: 50px 0px 12px rgba(0,0,0, 0.35);
+
+  --main-bg: #e0e0e0;
+
+  --menu-btn-color: #f09020;
+  --menu-btn-width: 58px;
+  --menu-svg-color: #f4f4f4;
+  --menu-svg-stroke: 2.2px;
+  --menu-shadow: 4px 0px 24px rgba(0,0,0,0.25);
+  --menu-bg-color: linear-gradient(#f09020, #ffaf4f);
+  --menu-color: #fff;
+  --menu-opacity: 1.0;
+  --menu-font-size: 1.5em;
+
+  /*New styles by Shawn Gray*/
+  --body-font-size:14px;
+
+  /* Sizes based on rank ---- size-md IS BASE VALUE
+     (rank: xl -> lg -> md -> sm -> xs)
+     Use for font-size, padding, margin, height, width, etc. */
+  --size-md:var(--body-font-size);      /* 14px   */
+  --size-xl:calc(var(--size-md) * 3);   /* 42px   */
+  --size-lg:calc(var(--size-md) * 2);   /* 28px   */
+  --size-sm:calc(var(--size-md) * .75); /* 10.5px */
+  --size-xs:calc(var(--size-md) * .5);  /* 7px    */
+  /*end Sizes*/
+  
+  /*Colors based on status (defaults are dark/light)*/
+  --color-dark:#404040;
+  --color-light:#e0e0e0;
+  --color-alert:#a50a5a;
+  --color-disabled:#6c757d;
+  --color-error:#dc3545;
+  --color-info:#0DCAF0;
+  --color-ok:#198754;
+  --color-warning:#ffc107;
+  /*end Colors*/
+}
