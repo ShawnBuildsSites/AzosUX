@@ -14,16 +14,15 @@ export class AzCheckbox extends AzosElement{
         const rank=ranks[!this.getAttribute('rank') ? 3 : this.getAttribute('rank')];
         this.status='';
         !this.getAttribute('status') ? this.status='text_dark' : this.getAttribute('status')=='disabled' ? this.status='text_disabled' : this.status=`text_${this.getAttribute('status')}`;
-        this.getAttribute('status')=='disabled' ? this.disabled='disabled' : this.disabled='';
+        this.getAttribute('status')=='disabled' ? this.disabled=true : this.disabled=false;
         return html`
             <div class="text_${rank} ${this.status}">
-                <label class="padding_${rank}" for="${this.id}">
-                    <input type="checkbox" class="${this.check}" id="${this.id}" name="${this.id}" ${this.disabled}>
-                    ${this.innerHTML}
+                <label class="padding_${rank}" style="padding-left:0px;" for="${this.id}">
+                    <input type="checkbox" class="${this.check}" id="${this.id}" name="${this.id}" ?disabled=${this.disabled}>
+                    <span>${this.innerHTML}</span>
                 </label>
             </div>
         `;
     }
-    
 }
 

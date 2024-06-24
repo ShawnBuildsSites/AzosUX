@@ -13,7 +13,7 @@ import {css} from '../../../../azos-js/packages/azos-ui/ui.js';
 
 export const baseStyles=css`
     a,button{cursor:pointer;}
-    .disabled,.border_disabled,.text_disabled,.bg_disabled{cursor:not-allowed;}
+    *:disabled,.disabled,.border_disabled,.text_disabled,.bg_disabled{cursor:not-allowed;}
 
     .text_xl{font-size:var(--size-xl);}
     .text_lg{font-size:var(--size-lg);}
@@ -174,52 +174,60 @@ export const buttonStyles=css`
 `;
 
 export const checkStyles=css`
-    div{ display:block; }
-    div:hover,div:focus{box-shadow:0 0 3px var(--color-dark);}
+    div{
+        display:block;
+        margin:10px;
+    }
     label{
         cursor:pointer;
+        padding:5px;
         display:grid;
         grid-template-columns: 1em auto;
+        align-items:center;
     }
     label:has(.check){ gap:.75em; }
+    label:has(.check):hover,label:has(.check):focus,.check:hover,.check:focus{box-shadow:0 0 3px var(--color-dark);}
     .check{
         cursor:pointer;
         margin:0;
         width:var(--size-md);
         height:var(--size-md);
         appearance:none;
-        background-color:none;
+        background-color:var(--color-light);
         border:.1em solid var(--color-dark);
+        border-radius:.2em;
+        display:grid;
+        place-content:center;
     }
     .check::before{
-        content:"";
+        content:"\u{2713}";
+        text-align:center;
+        position:relative;
+        top:-.25em;
+        font-size:var(--size-md);
         width:var(--size-md);
         height:var(--size-md);
-        clip-path:polygon(22% 48%, 36% 81%, 80% 0, 100% 21%, 37% 100%, 0 58%);
         transform:scale(0);
         transform-origin:center center;
         transition:.1s transform ease-in-out;
     }
-    .text_xl .check,.text_xl .check::before{width:var(--size-xl);height:var(--size-xl);}
-    .text_lg .check,.text_lg .check::before{width:var(--size-lg);height:var(--size-lg);}
-    .text_sm .check,.text_sm .check::before{width:var(--size-sm);height:var(--size-sm);}
-    .text_xs .check,.text_xs .check::before{width:var(--size-xs);height:var(--size-xs);}
-    .check:checked::before{ transform:scale(.75); }
-
-    .text_disabled .check{border:1px solid var(--color-disabled);}
-    .text_disabled .check::before{box-shadow:inset 1em 1em var(--color-disabled);}
-    .text_ok .check{border:1px solid var(--color-ok);}
-    .text_ok .check::before{box-shadow:inset 1em 1em var(--color-ok);}
-    .text_alert .check{border:1px solid var(--color-alert);}
-    .text_alert .check::before{box-shadow:inset 1em 1em var(--color-alert);}
-    .text_warning .check{border:1px solid var(--color-warning);}
-    .text_warning .check::before{box-shadow:inset 1em 1em var(--color-warning);}
-    .text_info .check{border:1px solid var(--color-info);}
-    .text_info .check::before{box-shadow:inset 1em 1em var(--color-info);}
-    .text_error .check{border:1px solid var(--color-error);}
-    .text_error .check::before{box-shadow:inset 1em 1em var(--color-error);}
-    .text_light .check{border:1px solid var(--color-light);}
-    .text_light .check::before{box-shadow:inset 1em 1em var(--color-light);}
+    .check:checked::before{ transform:scale(1); }
+    .padding_xl .check,.padding_xl .check::before{width:var(--size-xl);height:var(--size-xl);}
+    .padding_xl .check::before{font-size:var(--size-xl);}
+    .padding_lg .check,.padding_lg .check::before{width:var(--size-lg);height:var(--size-lg);}
+    .padding_lg .check::before{font-size:var(--size-lg);}
+    .padding_sm .check,.padding_sm .check::before{width:var(--size-sm);height:var(--size-sm);}
+    .padding_sm .check::before{font-size:var(--size-sm);}
+    .padding_xs .check,.padding_xs .check::before{width:var(--size-xs);height:var(--size-xs);}
+    .padding_xs .check::before{font-size:var(--size-xs);}
+    
+    .text_disabled .check{color:var(--color-disabled);border:1px solid var(--color-disabled);}
+    .text_ok .check{color:var(--color-ok);border:1px solid var(--color-ok);}
+    .text_alert .check{color:var(--color-alert);border:1px solid var(--color-alert);}
+    .text_warning .check{color:var(--color-warning);border:1px solid var(--color-warning);}
+    .text_info .check{color:var(--color-info);border:1px solid var(--color-info);}
+    .text_error .check{color:var(--color-error);border:1px solid var(--color-error);}
+    .text_light .check{color:var(--color-light);border:1px solid var(--color-light);}
 `;
 
 export const radioStyles=css`
@@ -259,8 +267,8 @@ export const radioStyles=css`
 
     .text_primary .radio,.bg_primary .radio,.border_primary .radio{border:1px solid var(--color-dark);}
     .text_primary .radio::before,.bg_primary .radio::before,.border_primary .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
-    .text_secondary .radio,.bg_secondary .radio,.border_secondary .radio{border:1px solid var(--color-dark);}
-    .text_secondary .radio::before,.bg_secondary .radio::before,.border_secondary .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
+    .text_disabled .radio,.bg_disabled .radio,.border_disabled .radio{border:1px solid var(--color-dark);}
+    .text_disabled .radio::before,.bg_disabled .radio::before,.border_disabled .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
     .text_success .radio,.bg_success .radio,.border_success .radio{border:1px solid var(--color-ok);}
     .text_success .radio::before,.bg_success .radio::before,.border_success .radio::before{box-shadow:inset 1em 1em var(--color-ok);}
     .text_danger .radio,.bg_danger .radio,.border_danger .radio{border:1px solid var(--color-error);}
@@ -276,7 +284,8 @@ export const radioStyles=css`
 `;
 
 export const switchStyles=css`
-    label:has(.switch){ gap:2em; }
+    label:has(.switch){ gap:2em;align-items:center; }
+    .padding_xs:has(.switch){gap:2.5em;}
     .switch{
         cursor:pointer;
         appearance:none;
@@ -293,7 +302,7 @@ export const switchStyles=css`
         height:1em;
     }
     label:has(.switch):hover,label:has(.switch):focus,.switch:hover,.switch:focus{box-shadow:0 0 5px var(--color-dark);}
-    .switch:checked,.bg_danger .switch:checked,.bg_success .switch:checked,.bg_warning .switch:checked,.bg_info .switch:checked,.bg_primary .switch:checked,.bg_secondary .switch:checked,.bg_dark .switch:checked,.bg_light .switch:checked{ background: var(--color-light); }
+    .switch:checked,.bg_danger .switch:checked,.bg_success .switch:checked,.bg_warning .switch:checked,.bg_info .switch:checked,.bg_primary .switch:checked,.bg_disabled .switch:checked,.bg_dark .switch:checked,.bg_light .switch:checked{ background: var(--color-light); }
     .switch::before{
         content:"";
         position:absolute;
@@ -313,23 +322,19 @@ export const switchStyles=css`
         background-color:currentColor;
         left:1em;
     }
-    .bg_danger .switch{background:var(--color-error)}
-    .bg_success .switch{background:var(--color-ok)}
+    .bg_error .switch{background:var(--color-error)}
+    .bg_ok .switch{background:var(--color-ok)}
     .bg_info .switch{background:var(--color-info)}
     .bg_warning .switch{background:var(--color-warning)}
-    .bg_primary .switch{background:var(--color-dark)}
-    .bg_secondary .switch{background:var(--color-dark)}
+    .bg_disabled .switch{background:var(--color-disabled)}
     .bg_light .switch{background:var(--color-light)}
-    .bg_dark .switch{background:var(--color-dark)}
 
-    .bg_danger .switch:checked::before{background-color:var(--color-error)}
-    .bg_success .switch:checked::before{background-color:var(--color-ok)}
+    .bg_error .switch:checked::before{background-color:var(--color-error)}
+    .bg_ok .switch:checked::before{background-color:var(--color-ok)}
     .bg_info .switch:checked::before{background-color:var(--color-info)}
     .bg_warning .switch:checked::before{background-color:var(--color-warning)}
-    .bg_primary .switch:checked::before{background-color:var(--color-dark)}
-    .bg_secondary .switch:checked::before{background-color:var(--color-dark)}
+    .bg_disabled .switch:checked::before{background-color:var(--color-disabled)}
     .bg_light .switch:checked::before{background-color:var(--color-light)}
-    .bg_dark .switch:checked::before{background-color:var(--color-dark)}
 `;
 
 export const inputStyles=css`
@@ -363,7 +368,7 @@ export const inputStyles=css`
         box-shadow:0 0 5px var(--color-dark);
     }
     .text_primary input,.text_primary textarea{border:1px solid var(--color-dark);}
-    .text_secondary input,.text_secondary textarea{border:1px solid var(--color-dark);}
+    .text_disabled input,.text_disabled textarea{border:1px solid var(--color-dark);}
     .text_info input,.text_info textarea{border:1px solid var(--color-info);}
     .text_success input,.text_success textarea{border:1px solid var(--color-ok);}
     .text_warning input,.text_warning textarea{border:1px solid var(--color-warning);}
