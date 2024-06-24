@@ -1,8 +1,8 @@
 import {AzosElement, html,css} from '../../../../azos-js/packages/azos-ui/ui.js';
-import {radioStyles,switchCheck,customCheck,colorStyles,iconStyles} from './styles.js';
+//import {radioStyles,switchCheck,customCheck,colorStyles,iconStyles} from './styles.js';
 
 export class AzRadioGroup extends AzosElement{
-    static styles=[radioStyles,switchCheck,customCheck,colorStyles,iconStyles,css`.addPadding{padding:5px 15px;}`];
+    //static styles=[radioStyles,switchCheck,customCheck,colorStyles,iconStyles,css`.addPadding{padding:5px 15px;}`];
     constructor(){
         super();
         this.listItems=this.getAttribute('choices').split('|');

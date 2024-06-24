@@ -1,8 +1,8 @@
 import {AzosElement, html,css} from '../../../../azos-js/packages/azos-ui/ui.js';
-import {inputStyles,colorStyles,iconStyles} from './styles.js';
+//import {inputStyles,colorStyles,iconStyles} from './styles.js';
 
 export class AzTextInput extends AzosElement{
-    static styles=[inputStyles,colorStyles,iconStyles,css`.addPadding{padding:5px 15px;}`];
+    //static styles=[inputStyles,colorStyles,iconStyles,css`.addPadding{padding:5px 15px;}`];
     constructor(){
         super();
         if(this.getAttribute('inputType')=='password') this.fieldType=html`input type="password"`;

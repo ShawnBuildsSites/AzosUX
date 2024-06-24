@@ -4,16 +4,22 @@ import {css} from '../../../../azos-js/packages/azos-ui/ui.js';
  * This file contains styles for components.         *
  *                                                   *
  * What's included:                                  *
- * baseStyles    *  buttonStyles *  customCheck      *
+ * baseStyles    *  buttonStyles *  checkStyles      *
  * iconStyles    *  inputStyles  *  radioStyles      *
- * selectStyles  *  switchCheck                      *
+ * selectStyles  *  switchStyles                     *
  *                                                   *
  * NOTE: Colors are contained in color-pallet.js     *
 ******************************************************/
 
 export const baseStyles=css`
     a,button{cursor:pointer;}
-    .disabled{cursor:not-allowed;}
+    .disabled,.border_disabled,.text_disabled,.bg_disabled{cursor:not-allowed;}
+
+    .text_xl{font-size:var(--size-xl);}
+    .text_lg{font-size:var(--size-lg);}
+    .text_md{font-size:var(--size-md);}
+    .text_sm{font-size:var(--size-sm);}
+    .text_xs{font-size:var(--size-xs);}
 
     .padding_xl{padding:var(--size-xl);}
     .padding_top_xl{padding-top:var(--size-xl);}
@@ -75,8 +81,8 @@ export const baseStyles=css`
     .margin_bottom_xs{margin-bottom:var(--size-xs);}
     .margin_left_xs{margin-left:var(--size-xs);}
 
-    .bg_dark,.bg_alert,.bg_error,.bg_ok{color:var(--color-light);}
-    .bg_light,.bg_disabled,.bg_warning,.bg_info{color:var(--color-dark);}
+    .bg_dark,.bg_disabled,.bg_alert,.bg_error,.bg_ok{color:var(--color-light);}
+    .bg_light,.bg_warning,.bg_info{color:var(--color-dark);}
 
     .bg_dark{background-color:var(--color-dark);}
     .bg_light{background-color:var(--color-light);}
@@ -96,6 +102,7 @@ export const baseStyles=css`
     .text_ok{color:var(--color-ok);}
     .text_warning{color:var(--color-warning);}
     
+    .border_none{border:none;}
     .border_dark{
         border:1px solid var(--color-dark);
         color:var(--color-dark);
@@ -136,98 +143,83 @@ export const buttonStyles=css`
         filter: brightness(1);
         margin:10px;
     }
-    button:hover{filter:brightness(1.15);}
+    button:not(.border_disabled):hover{filter:brightness(1.15);}
 
     /*sizes*/
     .btn_xl{
         font-size:var(--size-xl);
         padding:var(--size-lg) var(--size-xl);
-        border-radius:var(--size-xl);
+        border-radius:var(--size-lg);
     }
     .btn_lg{
         font-size:var(--size-lg);
         padding:var(--size-md) var(--size-lg);
-        border-radius:var(--size-lg);
+        border-radius:var(--size-md);
     }
     .btn,.btn_md{
         font-size:var(--size-md);
         padding:var(--size-sm) var(--size-md);
-        border-radius:var(--size-md);
+        border-radius:var(--size-sm);
     }
     .btn_sm{
         font-size:var(--size-sm);
         padding:var(--size-xs) var(--size-sm);
-        border-radius:var(--size-sm);
+        border-radius:var(--size-xs);
     }
     .btn_xs{
         font-size:var(--size-xs);
         padding:var(--size-xs);
-        border-radius:var(--size-xs);
+        border-radius:0;
     }
 `;
 
-export const customCheck=css`
-    div{
-        display:block;
-        margin:10px;
-    }
+export const checkStyles=css`
+    div{ display:block; }
+    div:hover,div:focus{box-shadow:0 0 3px var(--color-dark);}
     label{
         cursor:pointer;
-        padding:5px;
         display:grid;
         grid-template-columns: 1em auto;
     }
-    label:has(.customCheck){ gap:.75em; }
-    label:has(.customCheck):hover,label:has(.customCheck):focus,.customCheck:hover,.customCheck:focus{box-shadow:0 0 3px ${color.primary};}
-    .customCheck{
+    label:has(.check){ gap:.75em; }
+    .check{
         cursor:pointer;
         margin:0;
-        width:1.25em;
-        height:1.25em;
+        width:var(--size-md);
+        height:var(--size-md);
         appearance:none;
-        background-color:${color.light};
-        border:.1em solid ${color.dark};
-        border-radius:.2em;
-        display:grid;
-        place-content:center;
+        background-color:none;
+        border:.1em solid var(--color-dark);
     }
-    .customCheck::before{
+    .check::before{
         content:"";
-        width:1.6em;
-        height:1.6em;
+        width:var(--size-md);
+        height:var(--size-md);
         clip-path:polygon(22% 48%, 36% 81%, 80% 0, 100% 21%, 37% 100%, 0 58%);
         transform:scale(0);
         transform-origin:center center;
         transition:.1s transform ease-in-out;
-        box-shadow:inset 1em 1em ${color.dark};
     }
-    .customCheck:checked::before{ transform:scale(.75); }
-    /*.customCheck:indeterminate::before{
-        content:"";
-        width:1.6em;
-        height:1.6em;
-        clip-path:polygon(26% 32%, 73% 31%, 100% 50%, 74% 67%, 26% 67%, 0 50%);
-        transform:scale(1);
-        transform-origin:center center;
-        transition:.15s transform ease-in-out;
-        box-shadow:inset 1em 1em currentColor;
-    }*/
-    .text_primary .customCheck,.bg_primary .customCheck,.border_primary .customCheck{border:1px solid ${color.primary};}
-    .text_primary .customCheck::before,.bg_primary .customCheck::before,.border_primary .customCheck::before{box-shadow:inset 1em 1em ${color.primary};}
-    .text_secondary .customCheck,.bg_secondary .customCheck,.border_secondary .customCheck{border:1px solid ${color.primary};}
-    .text_secondary .customCheck::before,.bg_secondary .customCheck::before,.border_secondary .customCheck::before{box-shadow:inset 1em 1em ${color.primary};}
-    .text_success .customCheck,.bg_success .customCheck,.border_success .customCheck{border:1px solid ${color.success};}
-    .text_success .customCheck::before,.bg_success .customCheck::before,.border_success .customCheck::before{box-shadow:inset 1em 1em ${color.success};}
-    .text_danger .customCheck,.bg_danger .customCheck,.border_danger .customCheck{border:1px solid ${color.danger};}
-    .text_danger .customCheck::before,.bg_danger .customCheck::before,.border_danger .customCheck::before{box-shadow:inset 1em 1em ${color.danger};}
-    .text_warning .customCheck,.bg_warning .customCheck,.border_warning .customCheck{border:1px solid ${color.warning};}
-    .text_warning .customCheck::before,.bg_warning .customCheck::before,.border_warning .customCheck::before{box-shadow:inset 1em 1em ${color.warning};}
-    .text_info .customCheck,.bg_info .customCheck,.border_info .customCheck{border:1px solid ${color.info};}
-    .text_info .customCheck::before,.bg_info .customCheck::before,.border_info .customCheck::before{box-shadow:inset 1em 1em ${color.info};}
-    .text_light .customCheck,.bg_light .customCheck,.border_light .customCheck{border:1px solid ${color.light};}
-    .text_light .customCheck::before,.bg_light .customCheck::before,.border_light .customCheck::before{box-shadow:inset 1em 1em ${color.light};}
-    .text_dark .customCheck,.bg_dark .customCheck,.border_dark .customCheck{border:1px solid ${color.dark};}
-    .text_dark .customCheck::before,.bg_dark .customCheck::before,.border_dark .customCheck::before{box-shadow:inset 1em 1em ${color.dark};}
+    .text_xl .check,.text_xl .check::before{width:var(--size-xl);height:var(--size-xl);}
+    .text_lg .check,.text_lg .check::before{width:var(--size-lg);height:var(--size-lg);}
+    .text_sm .check,.text_sm .check::before{width:var(--size-sm);height:var(--size-sm);}
+    .text_xs .check,.text_xs .check::before{width:var(--size-xs);height:var(--size-xs);}
+    .check:checked::before{ transform:scale(.75); }
+
+    .text_disabled .check{border:1px solid var(--color-disabled);}
+    .text_disabled .check::before{box-shadow:inset 1em 1em var(--color-disabled);}
+    .text_ok .check{border:1px solid var(--color-ok);}
+    .text_ok .check::before{box-shadow:inset 1em 1em var(--color-ok);}
+    .text_alert .check{border:1px solid var(--color-alert);}
+    .text_alert .check::before{box-shadow:inset 1em 1em var(--color-alert);}
+    .text_warning .check{border:1px solid var(--color-warning);}
+    .text_warning .check::before{box-shadow:inset 1em 1em var(--color-warning);}
+    .text_info .check{border:1px solid var(--color-info);}
+    .text_info .check::before{box-shadow:inset 1em 1em var(--color-info);}
+    .text_error .check{border:1px solid var(--color-error);}
+    .text_error .check::before{box-shadow:inset 1em 1em var(--color-error);}
+    .text_light .check{border:1px solid var(--color-light);}
+    .text_light .check::before{box-shadow:inset 1em 1em var(--color-light);}
 `;
 
 export const radioStyles=css`
@@ -242,14 +234,14 @@ export const radioStyles=css`
         grid-template-columns: 1em auto;
         gap:.75em;
     }
-    label:has(.radio):hover,.radio:hover,label:has(.radio):focus,.radio:focus{box-shadow:0 0 5px ${color.primary};}
+    label:has(.radio):hover,.radio:hover,label:has(.radio):focus,.radio:focus{box-shadow:0 0 5px var(--color-dark);}
     .radio{
         cursor:pointer;
         appearance:none;
         margin:0;
         width:1.25em;
         height:1.25em;
-        background-color:${color.light};
+        background-color:var(--color-light);
         border-radius:50%;
         display:grid;
         place-content:center;
@@ -265,25 +257,25 @@ export const radioStyles=css`
     }
     .radio:checked::before{ transform:scale(.4); }
 
-    .text_primary .radio,.bg_primary .radio,.border_primary .radio{border:1px solid ${color.primary};}
-    .text_primary .radio::before,.bg_primary .radio::before,.border_primary .radio::before{box-shadow:inset 1em 1em ${color.primary};}
-    .text_secondary .radio,.bg_secondary .radio,.border_secondary .radio{border:1px solid ${color.primary};}
-    .text_secondary .radio::before,.bg_secondary .radio::before,.border_secondary .radio::before{box-shadow:inset 1em 1em ${color.primary};}
-    .text_success .radio,.bg_success .radio,.border_success .radio{border:1px solid ${color.success};}
-    .text_success .radio::before,.bg_success .radio::before,.border_success .radio::before{box-shadow:inset 1em 1em ${color.success};}
-    .text_danger .radio,.bg_danger .radio,.border_danger .radio{border:1px solid ${color.danger};}
-    .text_danger .radio::before,.bg_danger .radio::before,.border_danger .radio::before{box-shadow:inset 1em 1em ${color.danger};}
-    .text_warning .radio,.bg_warning .radio,.border_warning .radio{border:1px solid ${color.warning};}
-    .text_warning .radio::before,.bg_warning .radio::before,.border_warning .radio::before{box-shadow:inset 1em 1em ${color.warning};}
-    .text_info .radio,.bg_info .radio,.border_info .radio{border:1px solid ${color.info};}
-    .text_info .radio::before,.bg_info .radio::before,.border_info .radio::before{box-shadow:inset 1em 1em ${color.info};}
-    .text_light .radio,.bg_light .radio,.border_light .radio{border:1px solid ${color.light};}
-    .text_light .radio::before,.bg_light .radio::before,.border_light .radio::before{box-shadow:inset 1em 1em ${color.light};}
-    .text_dark .radio,.bg_dark .radio,.border_dark .radio{border:1px solid ${color.dark};}
-    .text_dark .radio::before,.bg_dark .radio::before,.border_dark .radio::before{box-shadow:inset 1em 1em ${color.dark};}
+    .text_primary .radio,.bg_primary .radio,.border_primary .radio{border:1px solid var(--color-dark);}
+    .text_primary .radio::before,.bg_primary .radio::before,.border_primary .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
+    .text_secondary .radio,.bg_secondary .radio,.border_secondary .radio{border:1px solid var(--color-dark);}
+    .text_secondary .radio::before,.bg_secondary .radio::before,.border_secondary .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
+    .text_success .radio,.bg_success .radio,.border_success .radio{border:1px solid var(--color-ok);}
+    .text_success .radio::before,.bg_success .radio::before,.border_success .radio::before{box-shadow:inset 1em 1em var(--color-ok);}
+    .text_danger .radio,.bg_danger .radio,.border_danger .radio{border:1px solid var(--color-error);}
+    .text_danger .radio::before,.bg_danger .radio::before,.border_danger .radio::before{box-shadow:inset 1em 1em var(--color-error);}
+    .text_warning .radio,.bg_warning .radio,.border_warning .radio{border:1px solid var(--color-warning);}
+    .text_warning .radio::before,.bg_warning .radio::before,.border_warning .radio::before{box-shadow:inset 1em 1em var(--color-warning);}
+    .text_info .radio,.bg_info .radio,.border_info .radio{border:1px solid var(--color-info);}
+    .text_info .radio::before,.bg_info .radio::before,.border_info .radio::before{box-shadow:inset 1em 1em var(--color-info);}
+    .text_light .radio,.bg_light .radio,.border_light .radio{border:1px solid var(--color-light);}
+    .text_light .radio::before,.bg_light .radio::before,.border_light .radio::before{box-shadow:inset 1em 1em var(--color-light);}
+    .text_dark .radio,.bg_dark .radio,.border_dark .radio{border:1px solid var(--color-dark);}
+    .text_dark .radio::before,.bg_dark .radio::before,.border_dark .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
 `;
 
-export const switchCheck=css`
+export const switchStyles=css`
     label:has(.switch){ gap:2em; }
     .switch{
         cursor:pointer;
@@ -300,8 +292,8 @@ export const switchCheck=css`
         width:2em;
         height:1em;
     }
-    label:has(.switch):hover,label:has(.switch):focus,.switch:hover,.switch:focus{box-shadow:0 0 5px ${color.primary};}
-    .switch:checked,.bg_danger .switch:checked,.bg_success .switch:checked,.bg_warning .switch:checked,.bg_info .switch:checked,.bg_primary .switch:checked,.bg_secondary .switch:checked,.bg_dark .switch:checked,.bg_light .switch:checked{ background: ${color.light}; }
+    label:has(.switch):hover,label:has(.switch):focus,.switch:hover,.switch:focus{box-shadow:0 0 5px var(--color-dark);}
+    .switch:checked,.bg_danger .switch:checked,.bg_success .switch:checked,.bg_warning .switch:checked,.bg_info .switch:checked,.bg_primary .switch:checked,.bg_secondary .switch:checked,.bg_dark .switch:checked,.bg_light .switch:checked{ background: var(--color-light); }
     .switch::before{
         content:"";
         position:absolute;
@@ -310,7 +302,7 @@ export const switchCheck=css`
         height:.75em;
         border:none;
         border-radius:50%;
-        background-color: ${color.light};
+        background-color: var(--color-light);
         transition:.2s all ease;
         top:50%;
         left:0;
@@ -321,23 +313,23 @@ export const switchCheck=css`
         background-color:currentColor;
         left:1em;
     }
-    .bg_danger .switch{background:${color.danger}}
-    .bg_success .switch{background:${color.success}}
-    .bg_info .switch{background:${color.info}}
-    .bg_warning .switch{background:${color.warning}}
-    .bg_primary .switch{background:${color.primary}}
-    .bg_secondary .switch{background:${color.secondary}}
-    .bg_light .switch{background:${color.light}}
-    .bg_dark .switch{background:${color.dark}}
+    .bg_danger .switch{background:var(--color-error)}
+    .bg_success .switch{background:var(--color-ok)}
+    .bg_info .switch{background:var(--color-info)}
+    .bg_warning .switch{background:var(--color-warning)}
+    .bg_primary .switch{background:var(--color-dark)}
+    .bg_secondary .switch{background:var(--color-dark)}
+    .bg_light .switch{background:var(--color-light)}
+    .bg_dark .switch{background:var(--color-dark)}
 
-    .bg_danger .switch:checked::before{background-color:${color.danger}}
-    .bg_success .switch:checked::before{background-color:${color.success}}
-    .bg_info .switch:checked::before{background-color:${color.info}}
-    .bg_warning .switch:checked::before{background-color:${color.warning}}
-    .bg_primary .switch:checked::before{background-color:${color.primary}}
-    .bg_secondary .switch:checked::before{background-color:${color.secondary}}
-    .bg_light .switch:checked::before{background-color:${color.light}}
-    .bg_dark .switch:checked::before{background-color:${color.dark}}
+    .bg_danger .switch:checked::before{background-color:var(--color-error)}
+    .bg_success .switch:checked::before{background-color:var(--color-ok)}
+    .bg_info .switch:checked::before{background-color:var(--color-info)}
+    .bg_warning .switch:checked::before{background-color:var(--color-warning)}
+    .bg_primary .switch:checked::before{background-color:var(--color-dark)}
+    .bg_secondary .switch:checked::before{background-color:var(--color-dark)}
+    .bg_light .switch:checked::before{background-color:var(--color-light)}
+    .bg_dark .switch:checked::before{background-color:var(--color-dark)}
 `;
 
 export const inputStyles=css`
@@ -347,8 +339,8 @@ export const inputStyles=css`
         border-radius:5px;
         padding:5px;
         width:80%;
-        background:${color.light};
-        color:${color.dark};
+        background:var(--color-light);
+        color:var(--color-dark);
         filter:brightness(1);
         margin-bottom:10px;
     }
@@ -356,8 +348,8 @@ export const inputStyles=css`
         filter:brightness(.85)
     }
     input[type=text]:disabled,input[type=password]:disabled,textarea:disabled{
-        color:${color.light};
-        background:${color.dark};
+        color:var(--color-light);
+        background:var(--color-dark);
     }
     label:has(+input[type=text]),label:has(+input[type=password]),label:has(+textarea){
         display:block;
@@ -368,16 +360,16 @@ export const inputStyles=css`
     }
     input[type=text]:focus,input[type=password]:focus,textarea:focus,
     input[type=text]:hover,input[type=password]:hover,textarea:hover{
-        box-shadow:0 0 5px ${color.primary};
+        box-shadow:0 0 5px var(--color-dark);
     }
-    .text_primary input,.text_primary textarea{border:1px solid ${color.primary};}
-    .text_secondary input,.text_secondary textarea{border:1px solid ${color.secondary};}
-    .text_info input,.text_info textarea{border:1px solid ${color.info};}
-    .text_success input,.text_success textarea{border:1px solid ${color.success};}
-    .text_warning input,.text_warning textarea{border:1px solid ${color.warning};}
-    .text_danger input,.text_danger textarea{border:1px solid ${color.danger};}
-    .text_light input,.text_light textarea{border:1px solid ${color.light};}
-    .text_dark input,.text_dark textarea{border:1px solid ${color.dark};}
+    .text_primary input,.text_primary textarea{border:1px solid var(--color-dark);}
+    .text_secondary input,.text_secondary textarea{border:1px solid var(--color-dark);}
+    .text_info input,.text_info textarea{border:1px solid var(--color-info);}
+    .text_success input,.text_success textarea{border:1px solid var(--color-ok);}
+    .text_warning input,.text_warning textarea{border:1px solid var(--color-warning);}
+    .text_danger input,.text_danger textarea{border:1px solid var(--color-error);}
+    .text_light input,.text_light textarea{border:1px solid var(--color-light);}
+    .text_dark input,.text_dark textarea{border:1px solid var(--color-dark);}
 `;
 
 export const selectStyles=css`
@@ -389,15 +381,15 @@ export const selectStyles=css`
         border:1px solid currentColor;
         border-radius:5px;
         padding:5px;
-        background:${color.light};
+        background:var(--color-light);
         color:currentColor;
         filter:brightness(1);
         width:100%;
         margin-bottom:10px;
     }
     select:disabled{
-        color:${color.light};
-        background:${color.dark};
+        color:var(--color-light);
+        background:var(--color-dark);
     }
 `;
 
@@ -409,13 +401,13 @@ export const iconStyles=css`
         margin-right:.75em;
     }
     .icon:has(+label){margin-top:.5em; margin-left:.75em; margin-right:.25em;}
-    .fill_info{fill:${color.info};}
-    .fill_warning{fill:${color.warning};}
-    .fill_danger{fill:${color.danger};}
-    .fill_success{fill:${color.success};}
-    .fill_light{fill:${color.light};}
-    .fill_dark{fill:${color.dark};}
+    .fill_info{fill:var(--color-info);}
+    .fill_warning{fill:var(--color-warning);}
+    .fill_danger{fill:var(--color-error);}
+    .fill_success{fill:var(--color-ok);}
+    .fill_light{fill:var(--color-light);}
+    .fill_dark{fill:var(--color-dark);}
 
-    .bg_success .fill_success{fill:${color.light};}
-    .bg_info .fill_info,.bg_warning .fill_warning,.bg_danger .fill_danger{fill:${color.dark};}
+    .bg_success .fill_success{fill:var(--color-light);}
+    .bg_info .fill_info,.bg_warning .fill_warning,.bg_danger .fill_danger{fill:var(--color-dark);}
 `;
