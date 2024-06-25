@@ -15,6 +15,7 @@
   <az-arena>
     <div slot="applet-content">
       <h1>UX Components Sandbox started June 21, 2024</h1>
+      <p style="border:1px dotted #a4a5b4;padding:10px;"><strong>&lt;az-button<br>&nbsp;&nbsp;&nbsp;&nbsp;id="unique_button_id"<br>&nbsp;&nbsp;&nbsp;&nbsp;rank="1|2|3 or (null)|4|5"<br>&nbsp;&nbsp;&nbsp;&nbsp;status="(null)|info|ok|alert|warning|disabled|error"<br>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;Button Content (text, images, icons, etc.)<br>&lt;/az-button&gt;</strong></p>
       <az-button id="basic_rank_1_button" rank="1">Rank 1 (xl) Button</az-button><br>
       <az-button id="basic_rank_2_button" rank="2">Rank 2 (lg) Button</az-button><br>
       <az-button id="no_rank_button">Rank 3 (default / md) Button</az-button><br>
@@ -29,6 +30,7 @@
       <az-button id="ok_status_button" status="ok">OK / Success Button</az-button>
       <az-button id="warning_status_button" status="warning">Warning Button</az-button>
       <hr>
+      <p style="border:1px dotted #a4a5b4;padding:10px;"><strong>&lt;az-checkbox<br>&nbsp;&nbsp;&nbsp;&nbsp;id="unique_checkbox_id"<br>&nbsp;&nbsp;&nbsp;&nbsp;rank="1|2|3 or (null)|4|5"<br>&nbsp;&nbsp;&nbsp;&nbsp;status="(null)|info|ok|alert|warning|disabled|error"<br>&nbsp;&nbsp;&nbsp;&nbsp;type="check or (null)|switch"<br>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;Checkbox label (text, images, icons, etc.)<br>&lt;/az-checkbox&gt;</strong></p>
       <az-checkbox id="check_rank_1" rank="1">Rank 1 (xl) checkbox</az-checkbox>
       <az-checkbox id="check_rank_2" rank="2">Rank 2 (lg) checkbox</az-checkbox>
       <az-checkbox id="check_rank_3">Rank 3 (default / md) checkbox</az-checkbox>
@@ -57,12 +59,94 @@
       <az-checkbox id="disabled_switch" type="switch" status="disabled">Disabled switch</az-checkbox>
       <az-checkbox id="error_switch" type="switch" status="error">Error switch</az-checkbox>
       <hr>
-      <az-radio-group id="basic_radio_group">
-        <label>Choose one:</label>
-        <option>First choice</option>
-        <option>Second choice</option>
-        <option>Third choice</options>
+      <p style="border:1px dotted #a4a5b4;padding:10px;"><strong>&lt;az-radio-group<br>&nbsp;&nbsp;&nbsp;&nbsp;id="unique_radio_group_id"<br>&nbsp;&nbsp;&nbsp;&nbsp;rank="1|2|3 or (null)|4|5"<br>&nbsp;&nbsp;&nbsp;&nbsp;status="(null)|info|ok|alert|warning|disabled|error"<br>&nbsp;&nbsp;&nbsp;&nbsp;type="radio or (null)|check|switch"<br>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;az-radio-label&gt; Question or Command &lt;/az-radio-label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;az-radio-option&gt; Option (text, images, icons, etc.) &lt;/az-radio-option&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;az-radio-option&gt; Option (text, images, icons, etc.) &lt;/az-radio-option&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;az-radio-option&gt; Option (text, images, icons, etc.) &lt;/az-radio-option&gt;<br>&lt;/az-radio-group&gt;</strong></p>
+      <az-radio-group id="radio_group_rank_1" rank="1">
+        <az-radio-label>Radio Group Rank 1 (xl)</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
       </az-radio-group>
+      <az-radio-group id="radio_group_rank_2" rank="2">
+        <az-radio-label>Radio Group Rank 2 (lg)</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <az-radio-group id="basic_radio_group">
+        <az-radio-label>Default Radio Group size (rank 3 / default / md)</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <az-radio-group id="radio_group_rank_4" rank="4">
+        <az-radio-label>Radio Group Rank 4 (sm)</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <az-radio-group id="radio_group_rank_5" rank="5">
+        <az-radio-label>Radio Group Rank 5 (xs)</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <hr>
+      <az-radio-group id="radio_group_info" status="info">
+        <az-radio-label>Info Radio Group</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <az-radio-group id="radio_group_ok" status="ok">
+        <az-radio-label>OK / Success Radio Group</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <az-radio-group id="radio_group_alert" status="alert">
+        <az-radio-label>Alert Radio Group</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <az-radio-group id="radio_group_warning" status="warning">
+        <az-radio-label>Warning Radio Group</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <az-radio-group id="radio_group_disabled" status="disabled">
+        <az-radio-label>Disabled Radio Group</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <az-radio-group id="radio_group_error" status="error">
+        <az-radio-label>Error Radio Group</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <hr>
+      <az-radio-group id="radio_group_checks" type="check">
+        <az-radio-label>Radio Group with checkboxes</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <hr>
+      <az-radio-group id="radio_group_switches" type="switch">
+        <az-radio-label>Radio Group with switches</az-radio-label>
+        <az-radio-option>First choice</az-radio-option>
+        <az-radio-option>Second choice</az-radio-option>
+        <az-radio-option>Third choice</az-radio-option>
+      </az-radio-group>
+      <hr>
+      <p style="border:1px dotted #a4a5b4;padding:10px;"><strong>&lt;az-text-input<br>&nbsp;&nbsp;&nbsp;&nbsp;id="unique_text_input_id"<br>&nbsp;&nbsp;&nbsp;&nbsp;rank="1|2|3 or (null)|4|5"<br>&nbsp;&nbsp;&nbsp;&nbsp;status="(null)|info|ok|alert|warning|disabled|error"<br>&nbsp;&nbsp;&nbsp;&nbsp;type="text or (null)|password|multiline"<br>&nbsp;&nbsp;&nbsp;&nbsp;min="integer"<br>&nbsp;&nbsp;&nbsp;&nbsp;max="integer"<br>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;az-text-input-label&gt; Text Input Label &lt;/az-text-input-label&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;az-text-input-placeholder&gt; Input Placeholder (appears inside field) &lt;/az-text-input-placeholder&gt;<br>&lt;/az-text-input&gt;</strong></p>
+      <az-text-input id="basic_text_input">
+        <az-text-input-label>This is a basic text input</az-text-input-label>
+        <az-text-input-placeholder>Type something here&hellip;</az-text-input-placeholder>
+      </az-text-input>
     </div>
   </az-arena>
 </body>

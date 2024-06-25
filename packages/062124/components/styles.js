@@ -180,7 +180,6 @@ export const checkStyles=css`
     }
     label{
         cursor:pointer;
-        padding:5px;
         display:grid;
         grid-template-columns: 1em auto;
         align-items:center;
@@ -237,7 +236,6 @@ export const radioStyles=css`
     }
     label{
         cursor:pointer;
-        padding:5px;
         display:grid;
         grid-template-columns: 1em auto;
         gap:.75em;
@@ -247,40 +245,43 @@ export const radioStyles=css`
         cursor:pointer;
         appearance:none;
         margin:0;
-        width:1.25em;
-        height:1.25em;
+        width:var(--size-md);
+        height:var(--size-md);
         background-color:var(--color-light);
         border-radius:50%;
+        border:.1em solid var(--color-dark);
         display:grid;
         place-content:center;
     }
     .radio::before{
-        content:'';
-        width:1.6em;
-        height:1.6em;
+        content:"\u{25cf}";
+        text-align:center;
+        position:relative;
+        top:-.125em;
+        font-size:var(--size-md);
+        width:var(--size-md);
+        height:var(--size-md);
         transform:scale(0);
-        border-radius:50%;
         transform-origin:center center;
         transition:.1s transform ease-in-out;
     }
-    .radio:checked::before{ transform:scale(.4); }
-
-    .text_primary .radio,.bg_primary .radio,.border_primary .radio{border:1px solid var(--color-dark);}
-    .text_primary .radio::before,.bg_primary .radio::before,.border_primary .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
-    .text_disabled .radio,.bg_disabled .radio,.border_disabled .radio{border:1px solid var(--color-dark);}
-    .text_disabled .radio::before,.bg_disabled .radio::before,.border_disabled .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
-    .text_success .radio,.bg_success .radio,.border_success .radio{border:1px solid var(--color-ok);}
-    .text_success .radio::before,.bg_success .radio::before,.border_success .radio::before{box-shadow:inset 1em 1em var(--color-ok);}
-    .text_danger .radio,.bg_danger .radio,.border_danger .radio{border:1px solid var(--color-error);}
-    .text_danger .radio::before,.bg_danger .radio::before,.border_danger .radio::before{box-shadow:inset 1em 1em var(--color-error);}
-    .text_warning .radio,.bg_warning .radio,.border_warning .radio{border:1px solid var(--color-warning);}
-    .text_warning .radio::before,.bg_warning .radio::before,.border_warning .radio::before{box-shadow:inset 1em 1em var(--color-warning);}
-    .text_info .radio,.bg_info .radio,.border_info .radio{border:1px solid var(--color-info);}
-    .text_info .radio::before,.bg_info .radio::before,.border_info .radio::before{box-shadow:inset 1em 1em var(--color-info);}
-    .text_light .radio,.bg_light .radio,.border_light .radio{border:1px solid var(--color-light);}
-    .text_light .radio::before,.bg_light .radio::before,.border_light .radio::before{box-shadow:inset 1em 1em var(--color-light);}
-    .text_dark .radio,.bg_dark .radio,.border_dark .radio{border:1px solid var(--color-dark);}
-    .text_dark .radio::before,.bg_dark .radio::before,.border_dark .radio::before{box-shadow:inset 1em 1em var(--color-dark);}
+    .radio:checked::before{ transform:scale(1); }
+    .padding_xl .radio,.padding_xl .radio::before{width:var(--size-xl);height:var(--size-xl);}
+    .padding_xl .radio::before{font-size:var(--size-xl);}
+    .padding_lg .radio,.padding_lg .radio::before{width:var(--size-lg);height:var(--size-lg);}
+    .padding_lg .radio::before{font-size:var(--size-lg);}
+    .padding_sm .radio,.padding_sm .radio::before{width:var(--size-sm);height:var(--size-sm);}
+    .padding_sm .radio::before{font-size:var(--size-sm);}
+    .padding_xs .radio,.padding_xs .radio::before{width:var(--size-xs);height:var(--size-xs);}
+    .padding_xs .radio::before{font-size:var(--size-xs);}
+    
+    .text_disabled .radio{color:var(--color-disabled);border:1px solid var(--color-disabled);}
+    .text_ok .radio{color:var(--color-ok);border:1px solid var(--color-ok);}
+    .text_alert .radio{color:var(--color-alert);border:1px solid var(--color-alert);}
+    .text_warning .radio{color:var(--color-warning);border:1px solid var(--color-warning);}
+    .text_info .radio{color:var(--color-info);border:1px solid var(--color-info);}
+    .text_error .radio{color:var(--color-error);border:1px solid var(--color-error);}
+    .text_light .radio{color:var(--color-light);border:1px solid var(--color-light);}
 `;
 
 export const switchStyles=css`
